@@ -1,4 +1,4 @@
-export function downloadImage(base64Data: string, filename: string) {
+export function downloadImage(base64Data: string, filename: string, format: string) {
   try {
     // Convert base64 to blob
     const byteCharacters = atob(base64Data.split(",")[1])
@@ -9,7 +9,8 @@ export function downloadImage(base64Data: string, filename: string) {
     }
 
     const byteArray = new Uint8Array(byteNumbers)
-    const blob = new Blob([byteArray], { type: "image/jpeg" })
+    const mimeType = format === "pdf" ? "application/pdf" : `image/${format}`
+    const blob = new Blob([byteArray], { type: mimeType })
 
     // Create download link
     const url = URL.createObjectURL(blob)
@@ -32,10 +33,10 @@ export function downloadImage(base64Data: string, filename: string) {
   }
 }
 
-export function generateFilename(title: string, url: string): string {
+export function generateFilename(title: string, url: string, format: string): string {
   const domain = new URL(url).hostname.replace("www.", "")
   const cleanTitle = title.replace(/[^a-zA-Z0-9\s-]/g, "").trim()
   const date = new Date().toISOString().split("T")[0]
 
-  return `${cleanTitle || domain}-screenshot-${date}.jpg`
+  return `${cleanTitle || domain}-screenshot-${date}.${format}`
 }

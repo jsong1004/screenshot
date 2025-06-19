@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Capture Website Screenshot',
-  description: 'Capture full-page screenshots of any website instantly. Simply enter a URL and get a high-quality JPG download with the website title automatically included in the filename.',
+  description: 'Capture full-page screenshots of any website instantly. Drag and drop a URL, select device type (mobile, tablet, desktop), choose format (JPG, PNG, PDF), set full-page or viewport, add a delay, and preview before download. Modern UI with progress bar and instant feedback.',
   generator: 'Screenshots.ai-biz.app',
 }
 
